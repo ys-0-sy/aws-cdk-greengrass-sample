@@ -23,20 +23,19 @@ class Camera():
   def capture_image(self):
     camera = picamera.PiCamera()
     imageData = BytesIO()
-
     try:
       camera.resolution = (224, 224)
       camera.start_preview()
       time.sleep(2)
       camera.capture(imageData, format="jpeg", resize = (224, 224))
-      camera.stop_prev
+      camera.stop_preview()
       imageData.seek(0)
       print("Image Captured")
       return imageData
-
+    except:
+      raise RuntimeError("There is problem to use your camera.")
     finally:
       camera.close()
-      raise RuntimeError("There is problem to use your camera.")
 
 
 def send_mqtt_message(mes):
@@ -57,15 +56,17 @@ def take_pic():
   imagebinary = my_camera.capture_image()
   send_mqtt_message("Took a Photo")
   # DataEncode
-  image64 = base64.b64encode(imagebinary.getvalue())
-  #image_str = image64.decode("utf-8")
-  return image64
+  binary = imagebinary.getvalue()
+  image64 = base64.b64encode(binary)
+  image_str = image64.decode("utf-8")
+  return image_str
 
 
 # The lambda to be invoked in Greengrass
 def handler(event, context):
   #try:
   img = take_pic()
+  print(type(img))
   send_mqtt_picture(img)
   send_mqtt_message("Finish sending bin of picture")
 #    except Exception as e:
