@@ -1,8 +1,8 @@
 {
-  "name": "aws-cdk-greengrass-sample",
+  "name": "aws-cdk-greengrass-raspberry-pi",
   "version": "0.1.0",
   "bin": {
-    "aws-cdk-greengrass-sample": "bin/aws-cdk-greengrass-sample.js"
+    "greengrass-raspberry-pi": "bin/greengrass-raspberry-pi.ts"
   },
   "scripts": {
     "build": "tsc",
@@ -14,14 +14,21 @@
     "@aws-cdk/assert": "1.38.0",
     "@types/jest": "^25.2.1",
     "@types/node": "10.17.5",
+    "aws-cdk": "1.38.0",
     "jest": "^25.5.0",
     "ts-jest": "^25.3.1",
-    "aws-cdk": "1.38.0",
     "ts-node": "^8.1.0",
     "typescript": "~3.7.2"
   },
   "dependencies": {
+    "@aws-cdk/aws-greengrass": "^1.38.0",
+    "@aws-cdk/aws-iot": "^1.38.0",
+    "@aws-cdk/aws-lambda": "^1.38.0",
     "@aws-cdk/core": "1.38.0",
+    "@types/config": "^0.0.36",
+    "@types/log4js": "^2.3.5",
+    "config": "^3.3.1",
+    "log4js": "^6.2.1",
     "source-map-support": "^0.5.16"
   }
 }
