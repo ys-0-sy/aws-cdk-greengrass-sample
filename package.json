@@ -28,7 +28,7 @@
     "@types/config": "^0.0.36",
     "@types/log4js": "^2.3.5",
     "config": "^3.3.1",
-    "log4js": "^6.2.1",
+    "log4js": "^6.4.0",
     "source-map-support": "^0.5.16"
   }
 }
